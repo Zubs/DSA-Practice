@@ -1,26 +1,11 @@
 <?php
 
-/**
- * Structure of a listNode
- */
-class ListNode
-{
-    public $data = null;
-    public $next = null;
-
-    /**
-     * @param string|null $data
-     */
-    public function __construct(string $data = null)
-    {
-        $this->data = $data;
-    }
-}
+namespace Zubs\Dsa\LinkedList;
 
 /**
  * LinkedList Implementation
  */
-class LinkedList
+class LinearLinkedList
 {
     private $first_node = null;
     private int $total_nodes = 0;
@@ -187,14 +172,3 @@ class LinkedList
         }
     }
 }
-
-$books = new LinkedList();
-$books->insert('How to make money in days');
-$books->insert('Why I love love');
-$books->insert("Testing a third time: Zubair's secret");
-$books->insertAtFirst("Hoping I make it first: Life too tuff");
-$books->insertBefore("How to get away with murder", "Why I love love");
-$books->insertAfter("I like this subject", "How to get away with murder");
-$books->display();
-
-echo $books->search("Why I love love") . PHP_EOL; // Returns true

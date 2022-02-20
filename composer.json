@@ -1,0 +1,17 @@
+{
+    "name": "zubair/php-dsa",
+    "type": "project",
+    "license": "ISC",
+    "autoload": {
+        "psr-4": {
+            "Zubs\\Dsa\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Zubs",
+            "email": "zubairidrisaweda@gmail.com"
+        }
+    ],
+    "require": {}
+}
