@@ -16,4 +16,9 @@ $books->deleteLast();
 $books->delete("Why I love love");
 $books->display();
 
+echo "========== TEST ==========" . PHP_EOL;
+
+$books->reverse();
+$books->display();
+
 echo $books->search("Why I love love") . PHP_EOL; // Returns true
