@@ -67,22 +67,6 @@ class LinearLinkedList
     }
 
     /**
-     * Deletes the leading node
-     * @return bool truw when the function completes
-     */
-    public function deleteFirst(): bool
-    {
-        if (is_null($this->first_node)) return false;
-        else {
-            if (!is_null($this->first_node->next)) $this->first_node = $this->first_node->next;
-            else $this->first_node = null;
-
-            $this->total_nodes -= 1;
-            return true;
-        }
-    }
-
-    /**
      * Add item before some other node
      * @param string|null $data String data to be added to list
      * @param string|null $target String data to be searched for
@@ -94,16 +78,16 @@ class LinearLinkedList
 
         if (is_null($this->first_node)) return false;
         else {
-            $previous = null;
+            $previous_node = null;
             $current_node = $this->first_node;
 
             while (!is_null($current_node)) {
                 if ($current_node->data === $target) {
-                    if (is_null($previous)) {
+                    if (is_null($previous_node)) {
                         $this->insertAtFirst($data);
                     } else {
                         $new_node->next = $current_node;
-                        $previous->next = $new_node;
+                        $previous_node->next = $new_node;
 
                         $this->total_nodes += 1;
                     }
@@ -111,7 +95,7 @@ class LinearLinkedList
                     break;
                 }
 
-                $previous = $current_node;
+                $previous_node = $current_node;
                 $current_node = $current_node->next;
             }
         }
@@ -149,6 +133,45 @@ class LinearLinkedList
         }
 
         return true;
+    }
+
+    /**
+     * Deletes the leading node
+     * @return bool true when the function completes
+     */
+    public function deleteFirst(): bool
+    {
+        if (is_null($this->first_node)) return false;
+        else {
+            if (!is_null($this->first_node->next)) $this->first_node = $this->first_node->next;
+            else $this->first_node = null;
+
+            $this->total_nodes -= 1;
+            return true;
+        }
+    }
+
+    /**
+     * Deletes the final node
+     * @return bool true when the function completes
+     */
+    public function deleteLast(): bool
+    {
+        if (is_null($this->first_node)) return false;
+        else {
+            $current_node = $this->first_node;
+            $previous_node = null;
+
+            while (!is_null($current_node->next)) {
+                $previous_node = $current_node;
+                $current_node = $current_node->next;
+            }
+
+            $previous_node->next = null;
+
+            $this->total_nodes -= 1;
+            return true;
+        }
     }
 
     /**
