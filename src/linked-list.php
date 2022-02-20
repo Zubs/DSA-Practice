@@ -82,6 +82,43 @@ class LinkedList
     }
 
     /**
+     * Add item before some other node
+     * @param string|null $data String data to be added to list
+     * @param string|null $target String data to be searched for
+     * @return bool true when the function completes
+     */
+    public function insertBefore(string $data = null, string $target = null): bool
+    {
+        $new_node = new ListNode($data);
+
+        if (is_null($this->first_node)) return false;
+        else {
+            $previous = null;
+            $current_node = $this->first_node;
+
+            while (!is_null($current_node)) {
+                if ($current_node->data === $target) {
+                    if (is_null($previous)) {
+                        $this->insertAtFirst($data);
+                    } else {
+                        $new_node->next = $current_node;
+                        $previous->next = $new_node;
+
+                        $this->total_nodes += 1;
+                    }
+
+                    break;
+                }
+
+                $previous = $current_node;
+                $current_node = $current_node->next;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Search for item in list
      * @param string|null $data String data to be searched
      * @return bool Returns whether the data exists in the list
@@ -124,6 +161,7 @@ $books->insert('How to make money in days');
 $books->insert('Why I love love');
 $books->insert("Testing a third time: Zubair's secret");
 $books->insertAtFirst("Hoping I make it first: Life too tuff");
+$books->insertBefore("How to get away with murder", "Why I love love");
 $books->display();
 
 echo $books->search("Why I love love") . PHP_EOL; // Returns true
