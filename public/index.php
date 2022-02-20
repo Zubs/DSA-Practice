@@ -36,4 +36,7 @@ echo "========== TEST ==========" . PHP_EOL;
 $players = new CircularLinkedList();
 $players->insert("Ronaldo");
 $players->insert("Neymar");
+$players->insert("Depay");
+$players->insertFirst("Pogba");
+var_dump($players->last_node);
 $players->display();
