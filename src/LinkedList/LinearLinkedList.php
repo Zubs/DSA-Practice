@@ -216,9 +216,9 @@ class LinearLinkedList
     /**
      * Search for item in list
      * @param string|null $data String data to be searched
-     * @return bool Returns whether the data exists in the list
+     * @return ListNode|bool Returns the node or false if it is not in the list
      */
-    public function search(string $data = null): bool
+    public function search(string $data = null): ListNode | bool
     {
         // Return false if list is empty. As I cannot search empty list.
         if (!$this->total_nodes) return false;
@@ -226,7 +226,7 @@ class LinearLinkedList
             $current_node = $this->first_node;
 
             while (!is_null($current_node)) {
-                if ($current_node->data === $data) return true;
+                if ($current_node->data === $data) return $current_node;
                 else {
                     $current_node = $current_node->next;
                 }
