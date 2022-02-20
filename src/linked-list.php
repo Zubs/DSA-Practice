@@ -57,6 +57,31 @@ class LinkedList
     }
 
     /**
+     * Add item to the beginning of the list (first node)
+     * @param string|null $data String data to be added to list
+     * @return bool true when the function completes
+     */
+    public function insertAtFirst(string $data = null): bool
+    {
+        $new_node = new ListNode($data);
+
+        if (is_null($this->first_node)) $this->first_node = $new_node;
+        else {
+            $current_first_node = $this->first_node;
+
+            // Replace first node
+            $this->first_node = $new_node;
+
+            // Set its next as the former first node, the other links remain in place
+            $this->first_node->next = $current_first_node;
+        }
+
+        $this->total_nodes += 1;
+
+        return true;
+    }
+
+    /**
      * Diplays the nodes in the list
      */
     public function display(): void
@@ -75,4 +100,5 @@ $books = new LinkedList();
 $books->insert('How to make money in days');
 $books->insert('Why I love love');
 $books->insert("Testing a third time: Zubair's secret");
+$books->insertAtFirst("Hoping I make it first: Life too tuff");
 $books->display();
