@@ -136,6 +136,45 @@ class LinearLinkedList
     }
 
     /**
+     * Deletes the given data
+     * @param string|null $data String data to be deleted
+     * @return bool true when function completes
+     */
+    public function delete(string $data = null): bool
+    {
+        if (is_null($this->first_node)) return false;
+        else {
+            $current_node = $this->first_node;
+            $previous_node = null;
+            $next_node = $current_node->next;
+
+            while (!is_null($current_node->data)) {
+                if ($current_node->data === $data) {
+                    if (is_null($previous_node)) {
+                        $this->deleteFirst();
+                        break;
+                    }
+
+                    if (is_null($next_node)) {
+                        $this->deleteLast();
+                        break;
+                    }
+
+                    $previous_node->next = $next_node;
+                    $this->total_nodes -= 1;
+                    break;
+                } else {
+                    $previous_node = $current_node;
+                    $current_node = $current_node->next;
+                    $next_node = $current_node->next;
+                }
+            }
+
+            return true;
+        }
+    }
+
+    /**
      * Deletes the leading node
      * @return bool true when the function completes
      */

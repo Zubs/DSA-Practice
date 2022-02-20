@@ -13,6 +13,7 @@ $books->insertBefore("How to get away with murder", "Why I love love");
 $books->insertAfter("I like this subject", "How to get away with murder");
 $books->deleteFirst();
 $books->deleteLast();
+$books->delete("Why I love love");
 $books->display();
 
 echo $books->search("Why I love love") . PHP_EOL; // Returns true
