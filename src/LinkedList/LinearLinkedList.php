@@ -46,7 +46,7 @@ class LinearLinkedList
      * @param string|null $data String data to be added to list
      * @return bool true when the function completes
      */
-    public function insertAtFirst(string $data = null): bool
+    public function insertFirst(string $data = null): bool
     {
         $new_node = new ListNode($data);
 
@@ -64,6 +64,22 @@ class LinearLinkedList
         $this->total_nodes += 1;
 
         return true;
+    }
+
+    /**
+     * Deletes the leading node
+     * @return bool truw when the function completes
+     */
+    public function deleteFirst(): bool
+    {
+        if (is_null($this->first_node)) return false;
+        else {
+            if (!is_null($this->first_node->next)) $this->first_node = $this->first_node->next;
+            else $this->first_node = null;
+
+            $this->total_nodes -= 1;
+            return true;
+        }
     }
 
     /**
