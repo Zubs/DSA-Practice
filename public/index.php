@@ -17,8 +17,10 @@ $books->delete("Why I love love");
 $books->display();
 
 echo "========== TEST ==========" . PHP_EOL;
-
 $books->reverse();
 $books->display();
+
+echo "========== TEST ==========" . PHP_EOL;
+var_dump($books->getNthNode(1));
 
 echo $books->search("Why I love love") . PHP_EOL; // Returns true

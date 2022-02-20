@@ -237,6 +237,28 @@ class LinearLinkedList
     }
 
     /**
+     * Get a node by its index in the list
+     * @param int $index The nth position of the desired node
+     * @return ListNode|bool The nth node
+     */
+    public function getNthNode(int $index = 1): ListNode | bool
+    {
+        if (is_null($this->first_node)) return false;
+        else {
+            $count = 1;
+            $current_node = $this->first_node;
+
+            while (!is_null($current_node)) {
+                if ($count === $index) return $current_node;
+                else {
+                    $count += 1;
+                    $current_node = $current_node->next;
+                }
+            }
+        }
+    }
+
+    /**
      * Reverses the list
      * @return bool true when the function completes
      */
