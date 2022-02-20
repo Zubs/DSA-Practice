@@ -2,13 +2,11 @@
 
 namespace Zubs\Dsa\LinkedList;
 
-/**
- * Structure of a unidirectional listNode
- */
-class ListNode
+class DoublyListNode
 {
     public string | null $data = null;
-    public ListNode | null $next = null;
+    public DoublyListNode | null $next = null;
+    public DoublyListNode | null $prev = null;
 
     /**
      * @param string|null $data
