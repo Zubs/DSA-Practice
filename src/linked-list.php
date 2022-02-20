@@ -119,6 +119,38 @@ class LinkedList
     }
 
     /**
+     * Add item after some other node
+     * @param string|null $data String data to be added to list
+     * @param string|null $target String data to be searched for
+     * @return bool true when function completes
+     */
+    public function insertAfter(string $data = null, string $target = null): bool
+    {
+        $new_node = new ListNode($data);
+
+        if (is_null($this->first_node)) return false;
+        else {
+            $current_node = $this->first_node;
+            $next_node = $current_node->next;
+
+            while (!is_null($current_node)) {
+                if ($current_node->data === $target) {
+                    $new_node->next = $next_node;
+                    $current_node->next = $new_node;
+
+                    $this->total_nodes += 1;
+                    break;
+                }
+
+                $current_node = $current_node->next;
+                $next_node = $current_node->next;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Search for item in list
      * @param string|null $data String data to be searched
      * @return bool Returns whether the data exists in the list
@@ -162,6 +194,7 @@ $books->insert('Why I love love');
 $books->insert("Testing a third time: Zubair's secret");
 $books->insertAtFirst("Hoping I make it first: Life too tuff");
 $books->insertBefore("How to get away with murder", "Why I love love");
+$books->insertAfter("I like this subject", "How to get away with murder");
 $books->display();
 
 echo $books->search("Why I love love") . PHP_EOL; // Returns true
