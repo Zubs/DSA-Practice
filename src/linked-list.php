@@ -82,6 +82,29 @@ class LinkedList
     }
 
     /**
+     * Search for item in list
+     * @param string|null $data String data to be searched
+     * @return bool Returns whether the data exists in the list
+     */
+    public function search(string $data = null): bool
+    {
+        // Return false if list is empty. As I cannot search empty list.
+        if (!$this->total_nodes) return false;
+        else {
+            $current_node = $this->first_node;
+
+            while (!is_null($current_node)) {
+                if ($current_node->data === $data) return true;
+                else {
+                    $current_node = $current_node->next;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Diplays the nodes in the list
      */
     public function display(): void
@@ -102,3 +125,5 @@ $books->insert('Why I love love');
 $books->insert("Testing a third time: Zubair's secret");
 $books->insertAtFirst("Hoping I make it first: Life too tuff");
 $books->display();
+
+echo $books->search("Why I love love") . PHP_EOL; // Returns true
