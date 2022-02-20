@@ -4,6 +4,8 @@ namespace Zubs\Dsa\LinkedList;
 
 class CircularLinkedList extends Base
 {
+    protected ListNode | null $last_node = null;
+
     public function insert(string $data): bool
     {
         $new_node = new ListNode($data);
@@ -18,9 +20,24 @@ class CircularLinkedList extends Base
 
             $current_node->next = $new_node;
             $new_node->next = $this->first_node;
+            $this->last_node = $new_node;
         }
 
         $this->total_nodes += 1;
+        return true;
+    }
+
+    public function insertFirst(string $data): bool
+    {
+        $new_node = new ListNode($data);
+
+        if (is_null($this->first_node)) $this->first_node = $new_node;
+        else {
+            $current_first_node = $this->first_node;
+            $this->first_node = $new_node;
+
+        }
+
         return true;
     }
 

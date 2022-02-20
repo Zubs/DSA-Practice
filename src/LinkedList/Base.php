@@ -20,6 +20,13 @@ abstract class Base implements Iterator
     abstract public function insert (string $data): bool;
 
     /**
+     * Add item to the beginning of the list (first node)
+     * @param string $data String data to be added to list
+     * @return bool true when the function completes
+     */
+    abstract public function insertFirst (string $data): bool;
+
+    /**
      * Diplays the nodes in the list
      */
     abstract public function display (): void;

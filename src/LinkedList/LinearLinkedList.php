@@ -33,12 +33,7 @@ class LinearLinkedList extends Base
         return true;
     }
 
-    /**
-     * Add item to the beginning of the list (first node)
-     * @param string|null $data String data to be added to list
-     * @return bool true when the function completes
-     */
-    public function insertFirst(string $data = null): bool
+    public function insertFirst(string $data): bool
     {
         $new_node = new ListNode($data);
 
