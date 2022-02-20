@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Zubs\Dsa\LinkedList\LinearLinkedList;
+use Zubs\Dsa\LinkedList\CircularLinkedList;
 
 $books = new LinearLinkedList();
 $books->insert('How to make money in days');
@@ -30,3 +31,9 @@ echo "========== TEST ==========" . PHP_EOL;
 foreach ($books as $book) {
     echo $book . PHP_EOL;
 }
+
+echo "========== TEST ==========" . PHP_EOL;
+$players = new CircularLinkedList();
+$players->insert("Ronaldo");
+$players->insert("Neymar");
+$players->display();

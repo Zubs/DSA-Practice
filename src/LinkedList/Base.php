@@ -4,10 +4,25 @@ namespace Zubs\Dsa\LinkedList;
 
 use Iterator;
 
-class Base implements Iterator
+abstract class Base implements Iterator
 {
-    protected $_CURRENT_NODE = null;
-    protected $_CURRENT_POSITION = 0;
+    private $_CURRENT_NODE = null;
+    private $_CURRENT_POSITION = 0;
+
+    protected ListNode | null $first_node = null;
+    protected int $total_nodes = 0;
+
+    /**
+     * Add item to list
+     * @param string $data String data to be added to list
+     * @return bool true when the function completes
+     */
+    abstract public function insert (string $data): bool;
+
+    /**
+     * Diplays the nodes in the list
+     */
+    abstract public function display (): void;
 
     public function current(): string
     {

@@ -7,15 +7,7 @@ namespace Zubs\Dsa\LinkedList;
  */
 class LinearLinkedList extends Base
 {
-    protected $first_node = null;
-    private int $total_nodes = 0;
-
-    /**
-     * Add item to list
-     * @param string|null $data String data to be added to list
-     * @return bool true when the function completes
-     */
-    public function insert(string $data = null): bool
+    public function insert(string $data): bool
     {
         // Create new listNode
         $new_node = new ListNode($data);
@@ -285,9 +277,6 @@ class LinearLinkedList extends Base
         }
     }
 
-    /**
-     * Diplays the nodes in the list
-     */
     public function display(): void
     {
         echo sprintf("There are %s items in the list", $this->total_nodes) . PHP_EOL;
