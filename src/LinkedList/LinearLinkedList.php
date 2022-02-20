@@ -5,9 +5,9 @@ namespace Zubs\Dsa\LinkedList;
 /**
  * LinkedList Implementation
  */
-class LinearLinkedList
+class LinearLinkedList extends Base
 {
-    private $first_node = null;
+    protected $first_node = null;
     private int $total_nodes = 0;
 
     /**

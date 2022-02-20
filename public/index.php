@@ -21,6 +21,12 @@ $books->reverse();
 $books->display();
 
 echo "========== TEST ==========" . PHP_EOL;
+echo $books->search("Why I love love") . PHP_EOL; // Returns true
+
+echo "========== TEST ==========" . PHP_EOL;
 var_dump($books->getNthNode(1));
 
-echo $books->search("Why I love love") . PHP_EOL; // Returns true
+echo "========== TEST ==========" . PHP_EOL;
+foreach ($books as $book) {
+    echo $book . PHP_EOL;
+}
