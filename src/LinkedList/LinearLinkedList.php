@@ -83,14 +83,8 @@ class LinearLinkedList extends Base
             return true;
         }
     }
-
-    /**
-     * Add item after some other node
-     * @param string|null $data String data to be added to list
-     * @param string|null $target String data to be searched for
-     * @return bool true when function completes
-     */
-    public function insertAfter(string $data = null, string $target = null): bool
+    
+    public function insertAfter(string $data, string $target): bool
     {
         $new_node = new ListNode($data);
 

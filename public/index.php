@@ -41,4 +41,5 @@ $players->insert("Neymar");
 $players->insert("Depay");
 $players->insertFirst("Pogba");
 $players->insertBefore('Martial', 'Depay');
+$players->insertAfter('Greenwood', 'Depay');
 $players->display();

@@ -80,6 +80,41 @@ class CircularLinkedList extends Base
         }
     }
 
+    public function insertAfter(string $data, string $target): bool {
+        $new_node = new ListNode($data);
+
+        if (is_null($this->first_node)) return false;
+        else {
+            $current_node = $this->first_node;
+            $next_node = $current_node->next;
+
+            while (!is_null($current_node->next) && $current_node->next !== $this->first_node) {
+                if ($current_node->data === $target) {
+                    $new_node->next = $next_node;
+                    $current_node->next = $new_node;
+
+                    $this->total_nodes += 1;
+                    break;
+                }
+
+                $current_node = $current_node->next;
+                $next_node = $current_node->next;
+            }
+
+            if ($current_node->next === $this->first_node) {
+                $current_last_node = $this->last_node;
+
+                $new_node->next = $this->first_node;
+                $current_last_node->next = $new_node;
+                $this->last_node = $new_node;
+
+                $this->total_nodes += 1;
+            }
+
+            return true;
+        }
+    }
+
     public function display(): void
     {
         echo sprintf("There are %s items in the list", $this->total_nodes) . PHP_EOL;
