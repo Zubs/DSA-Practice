@@ -37,6 +37,8 @@ class CircularLinkedList extends Base
             $this->first_node = $new_node;
             $this->first_node->next = $current_first_node;
             $this->last_node->next = $this->first_node;
+
+            $this->total_nodes += 1;
         }
 
         return true;
@@ -109,6 +111,34 @@ class CircularLinkedList extends Base
                 $this->last_node = $new_node;
 
                 $this->total_nodes += 1;
+            }
+
+            return true;
+        }
+    }
+
+    public function delete (string $data): bool {
+        if (is_null($this->first_node)) return false;
+        else {
+            $current_node = $this->first_node;
+            $previous_node = $this->last_node;
+            $next_node = $current_node->next;
+
+            while (!is_null($current_node->next) && $current_node->next !== $this->first_node) {
+                if ($current_node->data === $data) {
+                    $previous_node->next = $next_node;
+                    $this->total_nodes -= 1;
+                    break;
+                } else {
+                    $previous_node = $current_node;
+                    $current_node = $current_node->next;
+                    $next_node = $current_node->next;
+                }
+            }
+
+            if ($current_node === $this->last_node) {
+                $previous_node->next = $this->first_node;
+                 $this->total_nodes -= 1;
             }
 
             return true;

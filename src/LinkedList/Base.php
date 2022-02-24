@@ -43,6 +43,13 @@ abstract class Base implements Iterator
     abstract public function insertAfter(string $data, string $target): bool;
 
     /**
+     * Deletes the given data
+     * @param string $data String data to be deleted
+     * @return bool true when function completes
+     */
+    abstract public function delete (string $data): bool;
+
+    /**
      * Diplays the nodes in the list
      */
     abstract public function display (): void;

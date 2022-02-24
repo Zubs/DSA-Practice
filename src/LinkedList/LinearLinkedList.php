@@ -83,7 +83,7 @@ class LinearLinkedList extends Base
             return true;
         }
     }
-    
+
     public function insertAfter(string $data, string $target): bool
     {
         $new_node = new ListNode($data);
@@ -109,13 +109,8 @@ class LinearLinkedList extends Base
 
         return true;
     }
-
-    /**
-     * Deletes the given data
-     * @param string|null $data String data to be deleted
-     * @return bool true when function completes
-     */
-    public function delete(string $data = null): bool
+    
+    public function delete(string $data): bool
     {
         if (is_null($this->first_node)) return false;
         else {
