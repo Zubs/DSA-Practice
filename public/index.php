@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+include_once __DIR__ . '/functions.php';
+
 use Zubs\Dsa\LinkedList\LinearLinkedList;
 use Zubs\Dsa\LinkedList\CircularLinkedList;
 
@@ -17,26 +19,26 @@ $books->deleteLast();
 $books->delete("Why I love love");
 $books->display();
 
-echo "========== TEST ==========" . PHP_EOL;
+showHeader('Reversed list');
 $books->reverse();
 $books->display();
 
-echo "========== TEST ==========" . PHP_EOL;
+showHeader('Search');
 echo $books->search("Why I love love") . PHP_EOL; // Returns true
 
-echo "========== TEST ==========" . PHP_EOL;
+showHeader('See nth node');
 var_dump($books->getNthNode(1));
 
-echo "========== TEST ==========" . PHP_EOL;
+showHeader('Test iterable');
 foreach ($books as $book) {
     echo $book . PHP_EOL;
 }
 
-echo "========== TEST ==========" . PHP_EOL;
+showHeader('CircularLinkedList');
 $players = new CircularLinkedList();
 $players->insert("Ronaldo");
 $players->insert("Neymar");
 $players->insert("Depay");
 $players->insertFirst("Pogba");
-var_dump($players->last_node);
+$players->insertBefore('Martial', 'Depay');
 $players->display();

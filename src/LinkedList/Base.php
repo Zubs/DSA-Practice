@@ -27,6 +27,14 @@ abstract class Base implements Iterator
     abstract public function insertFirst (string $data): bool;
 
     /**
+     * Add item before some other node
+     * @param string $data String data to be added to list
+     * @param string $target String data to be searched for
+     * @return bool true when the function completes
+     */
+    abstract public function insertBefore (string $data, string $target): bool;
+
+    /**
      * Diplays the nodes in the list
      */
     abstract public function display (): void;

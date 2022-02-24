@@ -53,13 +53,7 @@ class LinearLinkedList extends Base
         return true;
     }
 
-    /**
-     * Add item before some other node
-     * @param string|null $data String data to be added to list
-     * @param string|null $target String data to be searched for
-     * @return bool true when the function completes
-     */
-    public function insertBefore(string $data = null, string $target = null): bool
+    public function insertBefore(string $data, string $target ): bool
     {
         $new_node = new ListNode($data);
 
@@ -71,7 +65,7 @@ class LinearLinkedList extends Base
             while (!is_null($current_node)) {
                 if ($current_node->data === $target) {
                     if (is_null($previous_node)) {
-                        $this->insertAtFirst($data);
+                        $this->insertFirst($data);
                     } else {
                         $new_node->next = $current_node;
                         $previous_node->next = $new_node;
@@ -85,9 +79,9 @@ class LinearLinkedList extends Base
                 $previous_node = $current_node;
                 $current_node = $current_node->next;
             }
-        }
 
-        return false;
+            return true;
+        }
     }
 
     /**
