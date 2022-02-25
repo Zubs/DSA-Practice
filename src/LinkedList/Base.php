@@ -62,6 +62,13 @@ abstract class Base implements Iterator
     abstract public function deleteLast(): bool;
 
     /**
+     * Search for item in list
+     * @param string $data String data to be searched
+     * @return ListNode|bool Returns the node or false if it is not in the list
+     */
+    abstract public function search(string $data): ListNode | bool;
+
+    /**
      * Diplays the nodes in the list
      */
     abstract public function display (): void;

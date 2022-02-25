@@ -174,12 +174,7 @@ class LinearLinkedList extends Base
         }
     }
 
-    /**
-     * Search for item in list
-     * @param string|null $data String data to be searched
-     * @return ListNode|bool Returns the node or false if it is not in the list
-     */
-    public function search(string $data = null): ListNode | bool
+    public function search(string $data): ListNode | bool
     {
         // Return false if list is empty. As I cannot search empty list.
         if (!$this->total_nodes) return false;

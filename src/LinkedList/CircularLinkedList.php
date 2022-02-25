@@ -177,6 +177,22 @@ class CircularLinkedList extends Base
         }
     }
 
+    public function search(string $data): ListNode | bool {
+        if (!$this->total_nodes) return false;
+        else {
+            $current_node = $this->first_node;
+
+            while (!is_null($current_node) && $current_node->next !== $this->first_node) {
+                if ($current_node->data === $data) return $current_node;
+                else $current_node = $current_node->next;
+            }
+
+            if ($current_node->data === $data) return $current_node;
+
+            return false;
+        }
+    }
+
     public function display(): void
     {
         echo sprintf("There are %s items in the list", $this->total_nodes) . PHP_EOL;

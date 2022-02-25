@@ -24,7 +24,7 @@ $books->reverse();
 $books->display();
 
 showHeader('Search');
-echo $books->search("Why I love love") . PHP_EOL; // Returns true
+var_dump($books->search("Why I love love"));
 
 showHeader('See nth node');
 var_dump($books->getNthNode(1));
@@ -46,3 +46,6 @@ $players->delete('Martial');
 $players->deleteFirst();
 $players->deleteLast();
 $players->display();
+
+showHeader('CircularLinkedList Node');
+var_dump($players->search('Neymar'));
