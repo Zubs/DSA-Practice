@@ -49,3 +49,6 @@ $players->display();
 
 showHeader('CircularLinkedList Node');
 var_dump($players->search('Neymar'));
+
+showHeader('CircularLinkedList nthNode');
+var_dump($players->getNthNode(2));

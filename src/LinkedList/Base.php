@@ -69,6 +69,13 @@ abstract class Base implements Iterator
     abstract public function search(string $data): ListNode | bool;
 
     /**
+     * Get a node by its index in the list
+     * @param int $index The nth position of the desired node
+     * @return ListNode|bool The nth node
+     */
+    abstract public function getNthNode(int $index): ListNode | bool;
+
+    /**
      * Diplays the nodes in the list
      */
     abstract public function display (): void;

@@ -192,13 +192,7 @@ class LinearLinkedList extends Base
         return false;
     }
 
-    /**
-     * Get a node by its index in the list
-     * @param int $index The nth position of the desired node
-     * @return ListNode|bool The nth node
-     */
-    public function getNthNode(int $index = 1): ListNode | bool
-    {
+    public function getNthNode(int $index): ListNode | bool {
         if (is_null($this->first_node)) return false;
         else {
             $count = 1;
@@ -211,6 +205,8 @@ class LinearLinkedList extends Base
                     $current_node = $current_node->next;
                 }
             }
+
+            return false;
         }
     }
 
