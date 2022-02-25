@@ -156,12 +156,7 @@ class LinearLinkedList extends Base
         }
     }
 
-    /**
-     * Deletes the final node
-     * @return bool true when the function completes
-     */
-    public function deleteLast(): bool
-    {
+    public function deleteLast(): bool {
         if (is_null($this->first_node)) return false;
         else {
             $current_node = $this->first_node;

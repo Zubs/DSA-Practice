@@ -56,6 +56,12 @@ abstract class Base implements Iterator
     abstract public function deleteFirst(): bool;
 
     /**
+     * Deletes the final node
+     * @return bool true when the function completes
+     */
+    abstract public function deleteLast(): bool;
+
+    /**
      * Diplays the nodes in the list
      */
     abstract public function display (): void;

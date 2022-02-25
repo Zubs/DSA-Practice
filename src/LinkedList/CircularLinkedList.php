@@ -158,6 +158,25 @@ class CircularLinkedList extends Base
         }
     }
 
+    public function deleteLast(): bool {
+        if (is_null($this->first_node)) return false;
+        else {
+            if (!is_null($this->last_node)) {
+                $current_node = $this->first_node;
+                $previous_node = null;
+
+                while ($current_node !== $this->last_node) {
+                    $previous_node = $current_node;
+                    $current_node = $current_node->next;
+                }
+
+                $previous_node->next = $this->first_node;
+                $this->total_nodes -= 1;
+                return true;
+            } else return $this->deleteFirst();
+        }
+    }
+
     public function display(): void
     {
         echo sprintf("There are %s items in the list", $this->total_nodes) . PHP_EOL;
