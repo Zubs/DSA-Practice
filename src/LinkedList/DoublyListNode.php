@@ -9,9 +9,9 @@ class DoublyListNode
     public DoublyListNode | null $prev = null;
 
     /**
-     * @param string|null $data
+     * @param string $data
      */
-    public function __construct(?string $data)
+    public function __construct(string $data)
     {
         $this->data = $data;
     }
