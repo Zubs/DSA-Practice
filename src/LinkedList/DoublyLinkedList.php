@@ -4,8 +4,6 @@ namespace Zubs\Dsa\LinkedList;
 
 class DoublyLinkedList extends Base
 {
-    private DoublyListNode | null $last_node = null;
-
     public function insert(string $data): bool
     {
         $new_node = new DoublyListNode($data);
@@ -31,7 +29,18 @@ class DoublyLinkedList extends Base
 
     public function insertFirst(string $data): bool
     {
-        // TODO: Implement insertFirst() method.
+        $new_node = new DoublyListNode($data);
+
+        if (is_null($this->first_node)) $this->first_node = $new_node;
+        else {
+            $current_first_node = $this->first_node;
+            $new_node->next = $current_first_node;
+            $current_first_node->prev = $new_node;
+            $this->first_node = $new_node;
+        }
+
+        $this->total_nodes += 1;
+        return true;
     }
 
     public function insertBefore(string $data, string $target): bool
