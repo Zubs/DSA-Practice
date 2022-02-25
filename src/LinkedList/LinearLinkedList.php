@@ -210,10 +210,6 @@ class LinearLinkedList extends Base
         }
     }
 
-    /**
-     * Reverses the list
-     * @return bool true when the function completes
-     */
     public function reverse(): bool
     {
         if (

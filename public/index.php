@@ -52,3 +52,7 @@ var_dump($players->search('Neymar'));
 
 showHeader('CircularLinkedList nthNode');
 var_dump($players->getNthNode(2));
+
+showHeader('CircularLinkedList Reversed');
+$players->reverse();
+$players->display();

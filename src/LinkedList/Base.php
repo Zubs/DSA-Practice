@@ -76,6 +76,12 @@ abstract class Base implements Iterator
     abstract public function getNthNode(int $index): ListNode | bool;
 
     /**
+     * Reverses the list
+     * @return bool true when the function completes
+     */
+    abstract public function reverse(): bool;
+
+    /**
      * Diplays the nodes in the list
      */
     abstract public function display (): void;

@@ -36,6 +36,8 @@ class CircularLinkedList extends Base
             $current_first_node = $this->first_node;
             $this->first_node = $new_node;
             $this->first_node->next = $current_first_node;
+
+            if (is_null($this->last_node)) $this->last_node = $current_first_node;
             $this->last_node->next = $this->first_node;
 
             $this->total_nodes += 1;
@@ -210,6 +212,30 @@ class CircularLinkedList extends Base
             if ($count === $index) return $current_node;
 
             return false;
+        }
+    }
+
+    public function reverse(): bool {
+        if (
+            !$this->total_nodes ||
+            is_null($this->first_node) ||
+            is_null($this->last_node)
+        ) return false;
+        else {
+            $current_node = $this->first_node;
+            $reversed_list = new self();
+
+            while (!is_null($current_node) && $current_node->next !== $this->first_node) {
+                $reversed_list->insertFirst($current_node->data);
+                $current_node = $current_node->next;
+            }
+
+            $reversed_list->insertFirst($current_node->data);
+
+            $this->first_node = $reversed_list->first_node;
+            $this->last_node = $reversed_list->last_node;
+
+            return true;
         }
     }
 
