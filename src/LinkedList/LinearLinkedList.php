@@ -144,10 +144,6 @@ class LinearLinkedList extends Base
         }
     }
 
-    /**
-     * Deletes the leading node
-     * @return bool true when the function completes
-     */
     public function deleteFirst(): bool
     {
         if (is_null($this->first_node)) return false;

@@ -43,4 +43,5 @@ $players->insertFirst("Pogba");
 $players->insertBefore('Martial', 'Depay');
 $players->insertAfter('Greenwood', 'Depay');
 $players->delete('Martial');
+$players->deleteFirst();
 $players->display();

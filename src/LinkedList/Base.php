@@ -50,6 +50,12 @@ abstract class Base implements Iterator
     abstract public function delete (string $data): bool;
 
     /**
+     * Deletes the leading node
+     * @return bool true when the function completes
+     */
+    abstract public function deleteFirst(): bool;
+
+    /**
      * Diplays the nodes in the list
      */
     abstract public function display (): void;
