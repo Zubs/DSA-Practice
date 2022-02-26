@@ -191,7 +191,24 @@ class DoublyLinkedList extends Base
 
     public function reverse(): bool
     {
-        // TODO: Implement reverse() method.
+        if (
+            !$this->total_nodes ||
+            is_null($this->first_node) ||
+            is_null($this->first_node->next)
+        ) return false;
+        else {
+            $current_node = $this->first_node;
+            $reversed_list = new self();
+
+            while (!is_null($current_node->next)) {
+                $reversed_list->insertFirst($current_node->data);
+                $current_node = $current_node->next;
+            }
+            $reversed_list->insertFirst($current_node->data);
+
+            $this->first_node = $reversed_list->first_node;
+            return true;
+        }
     }
 
     public function display(): void

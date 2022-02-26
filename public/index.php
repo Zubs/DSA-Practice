@@ -76,3 +76,7 @@ var_dump($friends->search('JP Cash'));
 
 showHeader('DoublyLinkedList getNthNode');
 var_dump($friends->getNthNode(2));
+
+showHeader('DoublyLinkedList reversed');
+$friends->reverse();
+$friends->display();
