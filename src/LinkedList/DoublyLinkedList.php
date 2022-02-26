@@ -45,7 +45,34 @@ class DoublyLinkedList extends Base
 
     public function insertBefore(string $data, string $target): bool
     {
-        // TODO: Implement insertBefore() method.
+        $new_node = new DoublyListNode($data);
+
+        if (is_null($this->first_node)) return false;
+        else {
+            $previous_node = null;
+            $current_node = $this->first_node;
+
+            while (!is_null($current_node)) {
+                if ($current_node->data === $target) {
+                    if (is_null($previous_node)) $this->insertFirst($data);
+                    else {
+                        $new_node->next = $current_node;
+                        $current_node->prev = $new_node;
+                        $previous_node->next = $new_node;
+                        $new_node->prev = $previous_node;
+
+                        $this->total_nodes += 1;
+                    }
+
+                    break;
+                }
+
+                $previous_node = $current_node;
+                $current_node = $current_node->next;
+            }
+
+            return true;
+        }
     }
 
     public function insertAfter(string $data, string $target): bool

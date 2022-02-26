@@ -64,6 +64,5 @@ $friends->insert('Zubair');
 $friends->insert('Idris');
 $friends->insert('Aweda');
 $friends->insertFirst('Babu');
+$friends->insertBefore('Muba', 'Aweda');
 $friends->display();
-
-var_dump($friends);
