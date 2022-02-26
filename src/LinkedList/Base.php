@@ -88,9 +88,9 @@ abstract class Base implements Iterator
     /**
      * Get a node by its index in the list
      * @param int $index The nth position of the desired node
-     * @return ListNode|bool The nth node
+     * @return DoublyListNode|ListNode|bool The nth node
      */
-    abstract public function getNthNode(int $index): ListNode | bool;
+    abstract public function getNthNode(int $index): DoublyListNode | ListNode | bool;
 
     /**
      * Reverses the list

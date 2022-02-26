@@ -73,3 +73,6 @@ $friends->display();
 
 showHeader('DoublyLinkedList Search');
 var_dump($friends->search('JP Cash'));
+
+showHeader('DoublyLinkedList getNthNode');
+var_dump($friends->getNthNode(2));

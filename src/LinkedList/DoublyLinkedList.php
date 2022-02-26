@@ -170,9 +170,23 @@ class DoublyLinkedList extends Base
         }
     }
 
-    public function getNthNode(int $index): ListNode|bool
+    public function getNthNode(int $index): DoublyListNode | bool
     {
-        // TODO: Implement getNthNode() method.
+        if (is_null($this->first_node)) return false;
+        else {
+            $count = 1;
+            $current_node = $this->first_node;
+
+            while (!is_null($current_node)) {
+                if ($count === $index) return $current_node;
+                else {
+                    $count += 1;
+                    $current_node = $current_node->next;
+                }
+            }
+
+            return false;
+        }
     }
 
     public function reverse(): bool
