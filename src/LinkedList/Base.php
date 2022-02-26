@@ -103,6 +103,15 @@ abstract class Base implements Iterator
      */
     abstract public function display (): void;
 
+    /**
+     * Returns the number of nodes in the list
+     * @return int Number of nodes in list
+     */
+    public function getSize (): int
+    {
+        return $this->total_nodes;
+    }
+
     public function current(): string
     {
         return $this->_CURRENT_NODE->data;

@@ -2,10 +2,12 @@
 
 namespace Zubs\Dsa\Stack;
 
+use Zubs\Dsa\LinkedList\Base as LinkedList;
+
 abstract class Base
 {
     protected int $limit;
-    protected array $stack = [];
+    protected LinkedList | array $stack = [];
 
     /**
      * Add new item to the end of stack
