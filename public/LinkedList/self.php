@@ -6,6 +6,7 @@ use Zubs\Dsa\LinkedList\DoublyLinkedList;
 
 include_once __DIR__ . '/../functions.php';
 
+showHeader('LinearLinkedList');
 $books = new LinearLinkedList();
 $books->insert('How to make money in days');
 $books->insert('Why I love love');
