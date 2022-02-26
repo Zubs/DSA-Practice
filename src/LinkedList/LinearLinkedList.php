@@ -156,24 +156,6 @@ class LinearLinkedList extends Base
         }
     }
 
-    public function deleteLast(): bool {
-        if (is_null($this->first_node)) return false;
-        else {
-            $current_node = $this->first_node;
-            $previous_node = null;
-
-            while (!is_null($current_node->next)) {
-                $previous_node = $current_node;
-                $current_node = $current_node->next;
-            }
-
-            $previous_node->next = null;
-
-            $this->total_nodes -= 1;
-            return true;
-        }
-    }
-
     public function search(string $data): ListNode | bool
     {
         // Return false if list is empty. As I cannot search empty list.

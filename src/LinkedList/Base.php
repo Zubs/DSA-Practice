@@ -59,7 +59,24 @@ abstract class Base implements Iterator
      * Deletes the final node
      * @return bool true when the function completes
      */
-    abstract public function deleteLast(): bool;
+    public function deleteLast(): bool
+    {
+        if (is_null($this->first_node)) return false;
+        else {
+            $current_node = $this->first_node;
+            $previous_node = null;
+
+            while (!is_null($current_node->next)) {
+                $previous_node = $current_node;
+                $current_node = $current_node->next;
+            }
+
+            $previous_node->next = null;
+
+            $this->total_nodes -= 1;
+            return true;
+        }
+    }
 
     /**
      * Search for item in list

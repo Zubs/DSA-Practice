@@ -106,17 +106,51 @@ class DoublyLinkedList extends Base
 
     public function delete(string $data): bool
     {
-        // TODO: Implement delete() method.
+        if (is_null($this->first_node)) return false;
+        else {
+            $current_node = $this->first_node;
+            $previous_node = $current_node->prev;
+            $next_node = $current_node->next;
+
+            while (!is_null($current_node)) {
+                if ($current_node->data === $data) {
+                    if (is_null($previous_node)) {
+                        $this->deleteFirst();
+                        break;
+                    }
+
+                    if (is_null($next_node)) {
+                        $this->deleteLast();
+                        break;
+                    }
+
+                    $previous_node->next = $next_node;
+                    $next_node->prev = $previous_node;
+                    $this->total_nodes -= 1;
+                    break;
+                } else {
+                    $previous_node = $current_node;
+                    $current_node = $next_node;
+                    $next_node = $current_node->next;
+                }
+            }
+
+            return true;
+        }
     }
 
     public function deleteFirst(): bool
     {
-        // TODO: Implement deleteFirst() method.
-    }
+        if (is_null($this->first_node)) return false;
+        else {
+            if (!is_null($this->first_node->next)) {
+                $this->first_node = $this->first_node->next;
+                $this->first_node->prev = null;
+            } else $this->first_node = null;
 
-    public function deleteLast(): bool
-    {
-        // TODO: Implement deleteLast() method.
+            $this->total_nodes -= 1;
+            return true;
+        }
     }
 
     public function search(string $data): ListNode|bool
