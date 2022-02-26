@@ -153,9 +153,21 @@ class DoublyLinkedList extends Base
         }
     }
 
-    public function search(string $data): ListNode|bool
+    public function search(string $data): DoublyListNode | bool
     {
-        // TODO: Implement search() method.
+        if (!$this->total_nodes) return false;
+        else {
+            $current_node = $this->first_node;
+
+            while (!is_null($current_node)) {
+                if ($current_node->data === $data) return $current_node;
+                else {
+                    $current_node = $current_node->next;
+                }
+            }
+
+            return false;
+        }
     }
 
     public function getNthNode(int $index): ListNode|bool

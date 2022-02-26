@@ -158,7 +158,6 @@ class LinearLinkedList extends Base
 
     public function search(string $data): ListNode | bool
     {
-        // Return false if list is empty. As I cannot search empty list.
         if (!$this->total_nodes) return false;
         else {
             $current_node = $this->first_node;

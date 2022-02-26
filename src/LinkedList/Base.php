@@ -81,9 +81,9 @@ abstract class Base implements Iterator
     /**
      * Search for item in list
      * @param string $data String data to be searched
-     * @return ListNode|bool Returns the node or false if it is not in the list
+     * @return DoublyListNode|ListNode|bool Returns the node or false if it is not in the list
      */
-    abstract public function search(string $data): ListNode | bool;
+    abstract public function search(string $data): DoublyListNode | ListNode | bool;
 
     /**
      * Get a node by its index in the list
