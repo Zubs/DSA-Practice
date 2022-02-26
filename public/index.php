@@ -65,4 +65,5 @@ $friends->insert('Idris');
 $friends->insert('Aweda');
 $friends->insertFirst('Babu');
 $friends->insertBefore('Muba', 'Aweda');
+$friends->insertAfter('JP Cash', 'Aweda');
 $friends->display();
