@@ -6,7 +6,7 @@ class BinaryTree
 {
     public BinaryNode | null $root = null;
 
-    public function insert(string $data): bool
+    public function insert(int $data): bool
     {
         $node = new BinaryNode($data);
 
@@ -47,6 +47,34 @@ class BinaryTree
         }
     }
 
-    public function retrieve()
-    {}
+    public function retrieve($node)
+    {
+        if ($this->isEmpty()) return false;
+
+        $current_node = $this->root;
+
+        if ($node->data === $current_node->data) return true;
+        else {
+            return $this->retrieveNode($node, $current_node);
+        }
+    }
+
+    public function retrieveNode(BinaryNode $node, BinaryNode $current_node): bool
+    {
+        if ($node->data < $current_node->data) {
+            if (is_null($current_node->left)) return false;
+
+            if ($current_node->left->data === $node->data) return true;
+
+            return $this->retrieveNode($node, $current_node->left);
+        } else if ($node->data > $current_node->data) {
+            if (is_null($current_node->right)) return false;
+
+            if ($current_node->right->data === $node->data) return true;
+
+            return $this->retrieveNode($node, $current_node->right);
+        } else {
+            return false;
+        }
+    }
 }
