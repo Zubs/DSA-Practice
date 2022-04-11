@@ -47,7 +47,7 @@ class BinaryTree
         }
     }
 
-    public function retrieve($node)
+    public function retrieve($node): bool
     {
         if ($this->isEmpty()) return false;
 
@@ -75,6 +75,26 @@ class BinaryTree
             return $this->retrieveNode($node, $current_node->right);
         } else {
             return false;
+        }
+    }
+
+    public function remove(BinaryNode $node)
+    {
+        if ($this->isEmpty()) return false;
+
+        if (!$this->retrieve($node)) return false;
+
+        if ($node->data === $this->root->data) {
+            $current_node = $this->root->left;
+
+            while (!is_null($current_node->right)) $current_node = $current_node->right;
+
+            $current_node->left = $this->root->left;
+            $current_node->right = $this->root->right;
+
+            $this->root = $current_node;
+
+            return true;
         }
     }
 }
