@@ -1,9 +1,9 @@
-const { LinearSearch } = require('../../dist/LinearSearch');
+const { LinearSearch, OrderedLinearSearch } = require('../../dist/LinearSearch');
 
 const array = [1, 3, 7, 15, 4];
+const orderedArray = [5, 6, 9, 11, 13];
 
-const indexOfNine = LinearSearch(array, 9);
-const indexOfFour = LinearSearch(array, 4);
-
-console.log(indexOfNine); // Returns -1
-console.log(indexOfFour); // Returns 4
+console.log(LinearSearch(array, 9)); // Returns -1
+console.log(LinearSearch(array, 4)); // Returns 4
+console.log(OrderedLinearSearch(orderedArray, 9)); // Returns 2
+console.log(OrderedLinearSearch(orderedArray, 4)); // Returns -1
