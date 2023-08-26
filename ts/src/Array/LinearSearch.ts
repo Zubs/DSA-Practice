@@ -20,7 +20,7 @@ export const LinearSearch = (numberArray: number[], targetNumber: number): numbe
 
 /**
  * Search for a number in an ordered array
- * @param numberArray An ordered array of numbers
+ * @param orderedNumberArray An ordered array of numbers
  * @param targetNumber A number to search for in the array
  * @returns The index of the found number, or -1 when not found
  */
