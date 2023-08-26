@@ -1,0 +1,38 @@
+const { LinearSearch, OrderedLinearSearch } = require("../dist/LinearSearch");
+const { BinarySearch } = require("../dist/BinarySearch");
+
+describe("LinearSearch", () => {
+    it.each([
+        { target: 25, array: [20, 35, 16, 96, 64, 8, 68, 95, 30, 25], solution: 9 },
+        { target: 64, array: [20, 35, 16, 96, 64, 8, 68, 95, 30, 25], solution: 4 },
+        { target: 65, array: [20, 35, 16, 96, 64, 8, 68, 95, 30, 25], solution: -1 },
+        { target: 9, array: [-1, 0, 3, 5, 9, 12], solution: 4 },
+        { target: 2, array: [-1, 0, 3, 5, 9, 12], solution: -1 },
+    ])("should return correct value", ({ target, array, solution }) => {
+        expect(LinearSearch(array, target)).toBe(solution);
+    });
+});
+
+describe("OrderedLinearSearch", () => {
+    it.each([
+        { target: 25, array: [8, 16, 20, 25, 30, 35, 64, 68, 95, 96], solution: 3 },
+        { target: 64, array: [8, 16, 20, 25, 30, 35, 64, 68, 95, 96], solution: 6 },
+        { target: 65, array: [8, 16, 20, 25, 30, 35, 64, 68, 95, 96], solution: -1 },
+        { target: 9, array: [-1, 0, 3, 5, 9, 12], solution: 4 },
+        { target: 2, array: [-1, 0, 3, 5, 9, 12], solution: -1 },
+    ])("should return correct value", ({ target, array, solution }) => {
+        expect(OrderedLinearSearch(array, target)).toBe(solution);
+    });
+});
+
+describe("BinarySearch", () => {
+    it.each([
+        { target: 25, array: [8, 16, 20, 25, 30, 35, 64, 68, 95, 96], solution: 3 },
+        { target: 64, array: [8, 16, 20, 25, 30, 35, 64, 68, 95, 96], solution: 6 },
+        { target: 65, array: [8, 16, 20, 25, 30, 35, 64, 68, 95, 96], solution: -1 },
+        { target: 9, array: [-1, 0, 3, 5, 9, 12], solution: 4 },
+        { target: 2, array: [-1, 0, 3, 5, 9, 12], solution: -1 },
+    ])("should return correct value", ({ target, array, solution }) => {
+        expect(BinarySearch(array, target)).toBe(solution);
+    });
+});

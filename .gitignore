@@ -2,4 +2,4 @@
 .vscode/
 .DS_Store
 php/vendor/
-*.lock
+ts/node_modules
