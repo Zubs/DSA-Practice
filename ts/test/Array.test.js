@@ -1,5 +1,6 @@
 const { LinearSearch, OrderedLinearSearch } = require("../dist/LinearSearch");
 const { BinarySearch } = require("../dist/BinarySearch");
+const { BubbleSort } = require("../dist/BubbleSort");
 
 describe("LinearSearch", () => {
     it.each([
@@ -34,5 +35,13 @@ describe("BinarySearch", () => {
         { target: 2, array: [-1, 0, 3, 5, 9, 12], solution: -1 },
     ])("should return correct value", ({ target, array, solution }) => {
         expect(BinarySearch(array, target)).toBe(solution);
+    });
+});
+
+describe("BubbleSort", () => {
+    it.each([
+        { array: [20, 35, 16, 96, 64, 8, 68, 95, 30, 25], solution: [ 8, 16, 20, 25, 30, 35, 64, 68, 95, 96 ] },
+    ])("should return correct value", ({ array, solution }) => {
+        expect(BubbleSort(array)).toEqual(solution);
     });
 });
