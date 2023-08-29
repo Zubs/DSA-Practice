@@ -11,6 +11,7 @@ I also picked up some videos and great articles too. See below for links.
 
 ### Algorithms
 * [TS Binary Search](./ts/src/Array/BinarySearch.ts)
+* [TS Bubble Sort](./ts/src/Array/BubbleSort.ts)
 
 ## Articles
 * [Binary Tree Implementation in PHP](https://medium.com/the-andela-way/binary-tree-implementation-in-php-e12df09d046f)
