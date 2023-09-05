@@ -18,3 +18,4 @@ I also picked up some videos and great articles too. See below for links.
 
 ## Articles
 * [Binary Tree Implementation in PHP](https://medium.com/the-andela-way/binary-tree-implementation-in-php-e12df09d046f)
+* [JavaScript Hash Table – Associative Array Hashing in JS](https://www.freecodecamp.org/news/javascript-hash-table-associative-array-hashing-in-js/)
