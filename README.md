@@ -8,6 +8,7 @@ I also picked up some videos and great articles too. See below for links.
 * [PHP Linked List](./php/src/LinkedList)
 * [PHP Stack](./php/src/Stack)
 * [PHP Binary Tree](./php/src/BinaryTree)
+* [PHP Hash Table](./php/src/HashTable)
 
 ### Algorithms
 * [TS Binary Search](./ts/src/Array/BinarySearch.ts)
