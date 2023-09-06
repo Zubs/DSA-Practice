@@ -13,8 +13,8 @@ $children->insert(18);
 $children->insert(7);
 $children->insert(13);
 
-$children->remove(new BinaryNode(12));
+//$children->remove(new BinaryNode(12));
 
 //echo $children->retrieve(new BinaryNode(21)) ? "True" : "False";
 
-var_dump($children);
+var_dump($children->search(new BinaryNode(12)));

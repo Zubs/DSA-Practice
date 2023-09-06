@@ -9,5 +9,5 @@ require_once __DIR__ . '/../vendor/autoload.php';
 //include_once __DIR__ . '/Stack/in-built.php';
 //include_once __DIR__ . '/Stack/problem1.php';
 
-//include_once __DIR__ . '/BinaryTree/self.php';
+include_once __DIR__ . '/BinaryTree/self.php';
 include_once __DIR__ . '/HashTable/self.php';

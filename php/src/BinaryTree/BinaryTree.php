@@ -4,8 +4,13 @@ namespace Zubs\Dsa\BinaryTree;
 
 class BinaryTree
 {
-    public BinaryNode | null $root = null;
+    private BinaryNode | null $root = null;
 
+    /**
+     * Add a new node to the tree
+     * @param int $data Number to add to the tree
+     * @return bool True or False expressing success
+     */
     public function insert(int $data): bool
     {
         $node = new BinaryNode($data);
@@ -19,13 +24,27 @@ class BinaryTree
         }
     }
 
+    /**
+     * Check if the tree has any node(s) in it
+     * @return bool True when empty, False when not empty
+     */
     public function isEmpty(): bool
     {
         return is_null($this->root);
     }
 
-    public function insertNode(BinaryNode $new_node, BinaryNode $current_node): bool
+    /**
+     * Adds a new node to the tree by attaching it to a parent
+     * @param BinaryNode $new_node New node to be added to the tree
+     * @param BinaryNode $current_node The parent of the new node
+     * @return bool True or False expressing success
+     */
+    private function insertNode(BinaryNode $new_node, BinaryNode $current_node): bool
     {
+        if ($new_node->data === $current_node->data) {
+            return false;
+        }
+
         if ($new_node->data < $current_node->data) {
             if (is_null($current_node->left)) {
                 return $current_node->addChildren($new_node, $current_node->right);
@@ -42,14 +61,23 @@ class BinaryTree
 
                 return $this->insertNode($new_node, $current_node);
             }
-        } else {
-            return false;
         }
+
+        return true;
     }
 
-    public function retrieve($node): bool
+    /**
+     * Search for Node or value in tree
+     * @param BinaryNode|int $node Node to search for
+     * @return bool True when node is found, False when otherwise
+     */
+    public function search(BinaryNode | int $node): bool
     {
         if ($this->isEmpty()) return false;
+
+        if (gettype($node) !== "object") {
+            $node = new BinaryNode($node);
+        }
 
         $current_node = $this->root;
 
@@ -59,7 +87,12 @@ class BinaryTree
         }
     }
 
-    public function retrieveNode(BinaryNode $node, BinaryNode $current_node): bool
+    /**
+     * @param BinaryNode $node
+     * @param BinaryNode $current_node
+     * @return bool True or False to represent success
+     */
+    private function retrieveNode(BinaryNode $node, BinaryNode $current_node): bool
     {
         if ($node->data < $current_node->data) {
             if (is_null($current_node->left)) return false;
@@ -78,23 +111,73 @@ class BinaryTree
         }
     }
 
-    public function remove(BinaryNode $node)
+    /**
+     * Remove a value or Node from the tree
+     * @param BinaryNode|int $node Node or value to remove from the tree
+     * @return bool True or False to represent status
+     */
+    public function remove(BinaryNode | int $node, bool $remove_children = true): bool
     {
         if ($this->isEmpty()) return false;
 
-        if (!$this->retrieve($node)) return false;
+        if (!$this->search($node)) return false;
+
+        if (gettype($node) !== "object") {
+            $node = new BinaryNode($node);
+        }
 
         if ($node->data === $this->root->data) {
-            $current_node = $this->root->left;
+            if ($remove_children) {
+                $this->root = null;
 
-            while (!is_null($current_node->right)) $current_node = $current_node->right;
+                return true;
+            }
 
-            $current_node->left = $this->root->left;
-            $current_node->right = $this->root->right;
+            $root = $this->root;
 
-            $this->root = $current_node;
+            if (is_null($root->left) && is_null($root->right)) {
+                $this->root = null;
 
-            return true;
+                return true;
+            }
+
+            return false;
         }
+
+        $previous_node = null;
+        $relationship = null;
+        $current_node = $this->root;
+
+        while (!is_null($current_node)) {
+            if ($node->data > $current_node->data) {
+                $previous_node = $current_node;
+                $relationship = 'right';
+                $current_node = $current_node->right;
+            }
+
+            if ($node->data < $current_node->data) {
+                $previous_node = $current_node;
+                $relationship = 'left';
+                $current_node = $current_node->left;
+            }
+
+            if ($remove_children) {
+                if ($relationship === 'right') {
+                    $previous_node->right = null;
+
+                    return true;
+                }
+
+                if ($relationship === 'left') {
+                    $previous_node->left = null;
+
+                    return true;
+                }
+            }
+
+            // Todo: Implement a way to keep the children
+        }
+
+        return true;
     }
 }
