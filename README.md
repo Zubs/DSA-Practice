@@ -1,4 +1,7 @@
 # Zubs' PHP DSA Practice
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5536e3f01ae840558a9b02e78a0a00a8)](https://app.codacy.com/gh/Zubs/DSA-Practice?utm_source=github.com&utm_medium=referral&utm_content=Zubs/DSA-Practice&utm_campaign=Badge_Grade)
+
 Here, I practice all the things I learn from the [PHP 7 Data Structures And Algorithms]() book I'm reading.
 
 I also picked up some videos and great articles too. See below for links.
