@@ -70,6 +70,15 @@ describe("QuickSort", () => {
         { array: [20, 35, 16, 96, 64, 8, 68, 95, 30, 25], solution: [ 8, 16, 20, 25, 30, 35, 64, 68, 95, 96 ] },
     ])("should return correct value", ({ array, solution }) => {
         const toSort = new SortableArray(array);
-        expect(toSort.quicksort(0, array.length - 1)).toEqual(solution);
+        expect(toSort.quickSort()).toEqual(solution);
+    });
+});
+
+describe("QuickSelect", () => {
+    it.each([
+        { array: [20, 35, 16, 96, 64, 8, 68, 95, 30, 25], solution: 25 },
+    ])("should return correct value", ({ array, solution }) => {
+        const toSort = new SortableArray(array);
+        expect(toSort.quickSelect(3)).toEqual(solution);
     });
 });

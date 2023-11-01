@@ -5,14 +5,49 @@ var SortableArray = /** @class */ (function () {
     function SortableArray(numberArray) {
         this.numberArray = numberArray;
     }
-    SortableArray.prototype.quicksort = function (leftIndex, rightIndex) {
+    /**
+     * Sort numbers in ASC order
+     *
+     * @param leftIndex Starting index of the (sub) array to sort - defaults to 0 for the entire array
+     * @param rightIndex Stop index of the (sub) array to sort - defaults to the last index of the array
+     *
+     * @returns An ordered array of numbers
+     */
+    SortableArray.prototype.quickSort = function (leftIndex, rightIndex) {
+        if (leftIndex === void 0) { leftIndex = 0; }
+        if (rightIndex === void 0) { rightIndex = this.numberArray.length - 1; }
         if (rightIndex - leftIndex <= 0) {
             return;
         }
         var pivotIndex = this.partition(leftIndex, rightIndex);
-        this.quicksort(leftIndex, pivotIndex - 1);
-        this.quicksort(pivotIndex + 1, rightIndex);
+        this.quickSort(leftIndex, pivotIndex - 1);
+        this.quickSort(pivotIndex + 1, rightIndex);
         return this.numberArray;
+    };
+    /**
+     * Find the nth lowest value in an unordered array
+     * @param nthLowestValue The nth lowest value to find
+     * @param leftIndex Starting index of the (sub) array to sort - defaults to 0 for the entire array
+     * @param rightIndex Stop index of the (sub) array to sort - defaults to the last index of the array
+     *
+     * @returns The nth lowest value in the array
+     */
+    SortableArray.prototype.quickSelect = function (nthLowestValue, leftIndex, rightIndex) {
+        if (leftIndex === void 0) { leftIndex = 0; }
+        if (rightIndex === void 0) { rightIndex = this.numberArray.length - 1; }
+        if (rightIndex - leftIndex <= 0) {
+            return this.numberArray[leftIndex];
+        }
+        var pivotIndex = this.partition(leftIndex, rightIndex);
+        if (pivotIndex === nthLowestValue) {
+            return this.numberArray[pivotIndex];
+        }
+        else if (pivotIndex > nthLowestValue) {
+            return this.quickSelect(nthLowestValue, leftIndex, pivotIndex - 1);
+        }
+        else {
+            return this.quickSelect(nthLowestValue, pivotIndex + 1, rightIndex);
+        }
     };
     SortableArray.prototype.partition = function (leftPointer, rightPointer) {
         // Use the rightmost element as the pivot
