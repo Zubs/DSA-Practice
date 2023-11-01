@@ -18,6 +18,7 @@ I also picked up some videos and great articles too. See below for links.
 * [TS Bubble Sort](./ts/src/Array/BubbleSort.ts)
 * [TS Selection Sort](./ts/src/Array/SelectionSort.ts)
 * [TS Insertion Sort](./ts/src/Array/InsertionSort.ts)
+* [TS Quick Sort](./ts/src/Array/QuickSort.ts)
 
 ## Articles
 * [Binary Tree Implementation in PHP](https://medium.com/the-andela-way/binary-tree-implementation-in-php-e12df09d046f)
