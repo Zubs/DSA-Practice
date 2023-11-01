@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BinarySearch = void 0;
 /**
  * Search for a number in an ordered array
- * @param numberArray An ordered array of numbers
+ * @param orderedNumberArray
  * @param targetNumber A number to search for in the array
  * @returns The index of the found number, or -1 when not found
  */

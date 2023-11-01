@@ -3,7 +3,7 @@ const { BinarySearch } = require("../dist/BinarySearch");
 const { BubbleSort } = require("../dist/BubbleSort");
 const { SelectionSort } = require("../dist/SelectionSort");
 const { InsertionSort } = require("../dist/InsertionSort");
-
+const { QuickSort } = require("../dist/QuickSort");
 
 describe("LinearSearch", () => {
     it.each([
@@ -62,5 +62,22 @@ describe("InsertionSort", () => {
         { array: [20, 35, 16, 96, 64, 8, 68, 95, 30, 25], solution: [ 8, 16, 20, 25, 30, 35, 64, 68, 95, 96 ] },
     ])("should return correct value", ({ array, solution }) => {
         expect(InsertionSort(array)).toEqual(solution);
+    });
+});
+
+describe.only("QuickSort partition", () => {
+    it.each([
+        { array: [20, 35, 16, 96, 64, 8, 68, 95, 30, 25], solution: [20,  8, 16, 25, 64, 35, 68, 95, 30, 96 ] },
+        { array: [20,  8, 16, 25, 64, 35, 68, 95, 30, 96], solution: [20,  8, 16, 25, 64, 35, 68, 95, 30, 96 ] },
+    ])("should return correct value", ({ array, solution }) => {
+        expect(QuickSort(array)).toEqual(solution);
+    });
+});
+
+describe("QuickSort", () => {
+    it.each([
+        { array: [20, 35, 16, 96, 64, 8, 68, 95, 30, 25], solution: [ 8, 16, 20, 25, 30, 35, 64, 68, 95, 96 ] },
+    ])("should return correct value", ({ array, solution }) => {
+        expect(QuickSort(array)).toEqual(solution);
     });
 });

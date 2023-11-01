@@ -6,8 +6,8 @@ use Iterator;
 
 abstract class Base implements Iterator
 {
-    private $_CURRENT_NODE = null;
-    private $_CURRENT_POSITION = 0;
+    private DoublyListNode | ListNode | null $_CURRENT_NODE = null;
+    private int $_CURRENT_POSITION = 0;
 
     protected DoublyListNode | ListNode | null $first_node = null;
     protected int $total_nodes = 0;
