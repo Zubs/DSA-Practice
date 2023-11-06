@@ -116,7 +116,7 @@ class BinarySearchTree
      * @param BinarySearchNode|int $node Node or value to remove from the tree
      * @return bool True or False to represent status
      */
-    public function remove(BinarySearchNode | int $node, bool $remove_children = true): bool
+    public function remove(BinarySearchNode | int $node): bool
     {
         if ($this->isEmpty()) return false;
 
@@ -127,21 +127,36 @@ class BinarySearchTree
         }
 
         if ($node->data === $this->root->data) {
-            if ($remove_children) {
-                $this->root = null;
-
-                return true;
-            }
-
             $root = $this->root;
 
+            // If the root has no children
             if (is_null($root->left) && is_null($root->right)) {
                 $this->root = null;
 
                 return true;
-            }
+            // If the root has only a right node
+            } else if (is_null($root->left) && !is_null($root->right)) {
+                $this->root = $root->right;
 
-            return false;
+                return true;
+            // If the root has only a left node
+            } else if (is_null($root->right) && !is_null($root->left)) {
+                $this->root = $root->left;
+
+                return true;
+            // If the root has both left and right nodes
+            } else {
+                $successor = $this->getSuccessor($root);
+
+                $former_left = $root->left;
+                $former_right = $root->right;
+
+                $this->root = $successor;
+                $this->root->left = $former_left;
+                $this->root->right = $former_right;
+
+                return true;
+            }
         }
 
         $previous_node = null;
@@ -153,31 +168,87 @@ class BinarySearchTree
                 $previous_node = $current_node;
                 $relationship = 'right';
                 $current_node = $current_node->right;
-            }
-
-            if ($node->data < $current_node->data) {
+            } else if ($node->data < $current_node->data) {
                 $previous_node = $current_node;
                 $relationship = 'left';
                 $current_node = $current_node->left;
-            }
+            } else {
+                // If the node to be deleted has no children
+                if (is_null($current_node->left) && is_null($current_node->right)) {
+                    if ($relationship === 'left') {
+                        $previous_node->left = null;
 
-            if ($remove_children) {
-                if ($relationship === 'right') {
-                    $previous_node->right = null;
+                        return true;
+                    } else {
+                        $previous_node->right = null;
 
-                    return true;
+                        return true;
+                    }
+                // If the current node has only a right node
+                } else if (!is_null($current_node->right) && is_null($current_node->left)) {
+                    if ($relationship === 'left') {
+                        $previous_node->left = $current_node->right;
+
+                        return true;
+                    } else {
+                        $previous_node->right = $current_node->right;
+
+                        return true;
+                    }
+                // If the current node has only a left node
+                } else if (is_null($current_node->right) && !is_null($current_node->left)) {
+                    if ($relationship === 'left') {
+                        $previous_node->left = $current_node->left;
+
+                        return true;
+                    } else {
+                        $previous_node->right = $current_node->left;
+
+                        return true;
+                    }
+                // If the current node has both left and right nodes
+                } else {
+                    // TODO: Implement a way to keep the children
+                    $successor = $this->getSuccessor($current_node);
+                    $former_left = $current_node->left;
+                    $former_right = $current_node->right;
+
+                    if ($relationship === 'left') {
+                        $previous_node->left = $successor;
+                    } else {
+                        $previous_node->right = $successor;
+                    }
+
+                    if ($former_right->data !== $successor->data) {
+                        $successor->right = $former_right;
+                    }
+
+                    if ($former_left->data !== $successor->data) {
+                        $successor->left = $former_left;
+                    }
                 }
-
-                if ($relationship === 'left') {
-                    $previous_node->left = null;
-
-                    return true;
-                }
             }
-
-            // Todo: Implement a way to keep the children
         }
 
         return true;
+    }
+
+    private function getSuccessor(BinarySearchNode $current_node): ?BinarySearchNode
+    {
+        $successor_parent = $current_node;
+        $successor = $current_node->right;
+
+        while (!is_null($successor->left)) {
+            $successor_parent = $successor;
+            $successor = $successor->left;
+        }
+
+        $successor_parent->left = null;
+
+        if (!is_null($successor->right)) {
+            $successor_parent->left = $successor->right;
+        }
+
+        return $successor;
     }
 }
