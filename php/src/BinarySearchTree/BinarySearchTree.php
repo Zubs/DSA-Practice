@@ -1,10 +1,10 @@
 <?php
 
-namespace Zubs\Dsa\BinaryTree;
+namespace Zubs\Dsa\BinarySearchTree;
 
-class BinaryTree
+class BinarySearchTree
 {
-    private BinaryNode | null $root = null;
+    private BinarySearchNode | null $root = null;
 
     /**
      * Add a new node to the tree
@@ -13,7 +13,7 @@ class BinaryTree
      */
     public function insert(int $data): bool
     {
-        $node = new BinaryNode($data);
+        $node = new BinarySearchNode($data);
 
         if ($this->isEmpty()) {
             $this->root = $node;
@@ -35,11 +35,11 @@ class BinaryTree
 
     /**
      * Adds a new node to the tree by attaching it to a parent
-     * @param BinaryNode $new_node New node to be added to the tree
-     * @param BinaryNode $current_node The parent of the new node
+     * @param BinarySearchNode $new_node New node to be added to the tree
+     * @param BinarySearchNode $current_node The parent of the new node
      * @return bool True or False expressing success
      */
-    private function insertNode(BinaryNode $new_node, BinaryNode $current_node): bool
+    private function insertNode(BinarySearchNode $new_node, BinarySearchNode $current_node): bool
     {
         if ($new_node->data === $current_node->data) {
             return false;
@@ -68,15 +68,15 @@ class BinaryTree
 
     /**
      * Search for Node or value in tree
-     * @param BinaryNode|int $node Node to search for
+     * @param BinarySearchNode|int $node Node to search for
      * @return bool True when node is found, False when otherwise
      */
-    public function search(BinaryNode | int $node): bool
+    public function search(BinarySearchNode | int $node): bool
     {
         if ($this->isEmpty()) return false;
 
         if (gettype($node) !== "object") {
-            $node = new BinaryNode($node);
+            $node = new BinarySearchNode($node);
         }
 
         $current_node = $this->root;
@@ -88,11 +88,11 @@ class BinaryTree
     }
 
     /**
-     * @param BinaryNode $node
-     * @param BinaryNode $current_node
+     * @param BinarySearchNode $node
+     * @param BinarySearchNode $current_node
      * @return bool True or False to represent success
      */
-    private function retrieveNode(BinaryNode $node, BinaryNode $current_node): bool
+    private function retrieveNode(BinarySearchNode $node, BinarySearchNode $current_node): bool
     {
         if ($node->data < $current_node->data) {
             if (is_null($current_node->left)) return false;
@@ -113,17 +113,17 @@ class BinaryTree
 
     /**
      * Remove a value or Node from the tree
-     * @param BinaryNode|int $node Node or value to remove from the tree
+     * @param BinarySearchNode|int $node Node or value to remove from the tree
      * @return bool True or False to represent status
      */
-    public function remove(BinaryNode | int $node, bool $remove_children = true): bool
+    public function remove(BinarySearchNode | int $node, bool $remove_children = true): bool
     {
         if ($this->isEmpty()) return false;
 
         if (!$this->search($node)) return false;
 
         if (gettype($node) !== "object") {
-            $node = new BinaryNode($node);
+            $node = new BinarySearchNode($node);
         }
 
         if ($node->data === $this->root->data) {

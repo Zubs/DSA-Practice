@@ -10,7 +10,7 @@ I also picked up some videos and great articles too. See below for links.
 ### Data Structures
 * [PHP Linked List](./php/src/LinkedList)
 * [PHP Stack](./php/src/Stack)
-* [PHP Binary Tree](./php/src/BinaryTree)
+* [PHP Binary Search Tree](./php/src/BinarySearchTree)
 * [PHP Hash Table](./php/src/HashTable)
 
 ### Algorithms

@@ -1,28 +1,28 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Zubs\Dsa\BinaryTree\BinaryNode;
-use Zubs\Dsa\BinaryTree\BinaryTree;
+use Zubs\Dsa\BinarySearchTree\BinarySearchNode;
+use Zubs\Dsa\BinarySearchTree\BinarySearchTree;
 
-final class BinaryTreeTest extends TestCase
+final class BinarySearchTreeTest extends TestCase
 {
     function testInsertShouldReturnTrueWhenNoRootNode()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
 
         $this->assertTrue($tree->insert(5));
     }
 
     function testIsEmptyShouldReturnTrueWhenRootIsNull()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
 
         $this->assertTrue($tree->isEmpty());
     }
 
     function testIsEmptyShouldReturnFalseWhenRootIsNotNull()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
         $tree->insert(5);
 
         $this->assertFalse($tree->isEmpty());
@@ -30,7 +30,7 @@ final class BinaryTreeTest extends TestCase
 
     function testInsertShouldReturnFalseWhenTwoNodesAreEqual()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
         $tree->insert(5);
 
         $this->assertFalse($tree->insert(5));
@@ -38,98 +38,98 @@ final class BinaryTreeTest extends TestCase
 
     function testInsertShouldReturnTrueWhenLowerValue()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
         $tree->insert(5);
         $this->assertTrue($tree->insert(3));
     }
 
     function testInsertShouldReturnTrueWhenHigherValue()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
         $tree->insert(5);
         $this->assertTrue($tree->insert(7));
     }
 
     function testSearchShouldReturnFalseWhenNoRootNode()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
 
-        $this->assertFalse($tree->search(new BinaryNode(5)));
+        $this->assertFalse($tree->search(new BinarySearchNode(5)));
     }
 
     function testSearchShouldReturnTrueWhenNodeIsFound()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
         $tree->insert(5);
 
-        $this->assertTrue($tree->search(new BinaryNode(5)));
+        $this->assertTrue($tree->search(new BinarySearchNode(5)));
         $this->assertTrue($tree->search(5));
     }
 
     function testSearchShouldReturnFalseWhenNodeIsNotFound()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
         $tree->insert(5);
 
-        $this->assertFalse($tree->search(new BinaryNode(6)));
+        $this->assertFalse($tree->search(new BinarySearchNode(6)));
         $this->assertFalse($tree->search(6));
     }
 
     function testRemoveShouldReturnFalseWhenNoRootNode()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
 
-        $this->assertFalse($tree->remove(new BinaryNode(5)));
+        $this->assertFalse($tree->remove(new BinarySearchNode(5)));
         $this->assertFalse($tree->remove(5));
     }
 
     function testRemoveShouldReturnFalseWhenNodeIsNotInTree()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
         $tree->insert(4);
 
-        $this->assertFalse($tree->remove(new BinaryNode(5)));
+        $this->assertFalse($tree->remove(new BinarySearchNode(5)));
         $this->assertFalse($tree->remove(5));
     }
 
     function testRemoveShouldRemoveRootNodeAndReturnTrueIfNoChildrenNodes()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
         $tree->insert(3);
 
         $this->assertTrue($tree->remove(3));
-        $this->assertFalse($tree->remove(new BinaryNode(3)));
+        $this->assertFalse($tree->remove(new BinarySearchNode(3)));
         $this->assertFalse($tree->search(3));
-        $this->assertFalse($tree->search(new BinaryNode(3)));
+        $this->assertFalse($tree->search(new BinarySearchNode(3)));
     }
 
     function testRemoveShouldRemoveRootNodeAndReturnTrueIfTheresChildrenNodes()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
         $tree->insert(3);
         $tree->insert(5);
 
         $this->assertTrue($tree->remove(3));
-        $this->assertFalse($tree->remove(new BinaryNode(3)));
+        $this->assertFalse($tree->remove(new BinarySearchNode(3)));
         $this->assertFalse($tree->search(3));
-        $this->assertFalse($tree->search(new BinaryNode(5)));
+        $this->assertFalse($tree->search(new BinarySearchNode(5)));
     }
 
     function testRemoveShouldNotRemoveRootNodeAndReturnFalseIfTheresChildrenNodesAndRemoveChildrenIsFalse()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
         $tree->insert(3);
         $tree->insert(5);
 
         $this->assertFalse($tree->remove(3, false));
-        $this->assertFalse($tree->remove(new BinaryNode(3), false));
+        $this->assertFalse($tree->remove(new BinarySearchNode(3), false));
         $this->assertTrue($tree->search(3));
-        $this->assertTrue($tree->search(new BinaryNode(5)));
+        $this->assertTrue($tree->search(new BinarySearchNode(5)));
     }
 
     function testRemoveShouldRemoveNodeAndReturnTrue()
     {
-        $tree = new BinaryTree();
+        $tree = new BinarySearchTree();
         $tree->insert(3);
         $tree->insert(15);
         $tree->insert(2);
@@ -137,9 +137,9 @@ final class BinaryTreeTest extends TestCase
         $tree->insert(6);
 
         $this->assertTrue($tree->remove(15));
-        $this->assertFalse($tree->remove(new BinaryNode(15)));
+        $this->assertFalse($tree->remove(new BinarySearchNode(15)));
         $this->assertFalse($tree->search(8));
         $this->assertFalse($tree->search(6));
-        $this->assertTrue($tree->search(new BinaryNode(2)));
+        $this->assertTrue($tree->search(new BinarySearchNode(2)));
     }
 }

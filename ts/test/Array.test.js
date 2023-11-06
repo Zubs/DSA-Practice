@@ -79,6 +79,7 @@ describe("QuickSelect", () => {
         { array: [20, 35, 16, 96, 64, 8, 68, 95, 30, 25], solution: 25 },
     ])("should return correct value", ({ array, solution }) => {
         const toSort = new SortableArray(array);
+        // Check the 4th lowest item
         expect(toSort.quickSelect(3)).toEqual(solution);
     });
 });

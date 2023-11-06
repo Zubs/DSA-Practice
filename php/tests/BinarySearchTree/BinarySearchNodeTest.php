@@ -1,13 +1,13 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Zubs\Dsa\BinaryTree\BinaryNode;
+use Zubs\Dsa\BinarySearchTree\BinarySearchNode;
 
-final class BinaryNodeTest extends TestCase
+final class BinarySearchNodeTest extends TestCase
 {
     function testShouldSetDataToConstructorValueAndLeftAndRightToNull()
     {
-        $newNode = new BinaryNode(5);
+        $newNode = new BinarySearchNode(5);
 
         $this->assertSame($newNode->data, 5);
         $this->assertNull($newNode->left);
@@ -16,8 +16,8 @@ final class BinaryNodeTest extends TestCase
 
     function testShouldSetLeftToNullWhenOnlyRightIsSet()
     {
-        $newNode = new BinaryNode(5);
-        $rightNode = new BinaryNode(4);
+        $newNode = new BinarySearchNode(5);
+        $rightNode = new BinarySearchNode(4);
 
         $this->assertTrue($newNode->addChildren(null, $rightNode));
         $this->assertSame($newNode->data, 5);
@@ -30,8 +30,8 @@ final class BinaryNodeTest extends TestCase
 
     function testShouldSetRightToNullWhenOnlyLeftIsSet()
     {
-        $newNode = new BinaryNode(5);
-        $leftNode = new BinaryNode(4);
+        $newNode = new BinarySearchNode(5);
+        $leftNode = new BinarySearchNode(4);
 
         $this->assertTrue($newNode->addChildren($leftNode, null));
         $this->assertSame($newNode->data, 5);
