@@ -127,36 +127,7 @@ class BinarySearchTree
         }
 
         if ($node->data === $this->root->data) {
-            $root = $this->root;
-
-            // If the root has no children
-            if (is_null($root->left) && is_null($root->right)) {
-                $this->root = null;
-
-                return true;
-            // If the root has only a right node
-            } else if (is_null($root->left) && !is_null($root->right)) {
-                $this->root = $root->right;
-
-                return true;
-            // If the root has only a left node
-            } else if (is_null($root->right) && !is_null($root->left)) {
-                $this->root = $root->left;
-
-                return true;
-            // If the root has both left and right nodes
-            } else {
-                $successor = $this->getSuccessor($root);
-
-                $former_left = $root->left;
-                $former_right = $root->right;
-
-                $this->root = $successor;
-                $this->root->left = $former_left;
-                $this->root->right = $former_right;
-
-                return true;
-            }
+            return $this->removeRoot();
         }
 
         $previous_node = null;
@@ -233,6 +204,40 @@ class BinarySearchTree
         return true;
     }
 
+    private function removeRoot(): true
+    {
+        $root = $this->root;
+
+        // If the root has no children
+        if (is_null($root->left) && is_null($root->right)) {
+            $this->root = null;
+
+            return true;
+            // If the root has only a right node
+        } else if (is_null($root->left) && !is_null($root->right)) {
+            $this->root = $root->right;
+
+            return true;
+            // If the root has only a left node
+        } else if (is_null($root->right) && !is_null($root->left)) {
+            $this->root = $root->left;
+
+            return true;
+            // If the root has both left and right nodes
+        } else {
+            $successor = $this->getSuccessor($root);
+
+            $former_left = $root->left;
+            $former_right = $root->right;
+
+            $this->root = $successor;
+            $this->root->left = $former_left;
+            $this->root->right = $former_right;
+
+            return true;
+        }
+    }
+
     private function getSuccessor(BinarySearchNode $current_node): ?BinarySearchNode
     {
         $successor_parent = $current_node;
@@ -250,5 +255,22 @@ class BinarySearchTree
         }
 
         return $successor;
+    }
+
+    public function print(BinarySearchNode $node = null): void
+    {
+        if (is_null($node)) {
+            $node = $this->root;
+        }
+
+        if (!is_null($node->left)) {
+            $this->print($node->left);
+        }
+
+        echo $node->data . "\n";
+
+        if (!is_null($node->right)) {
+            $this->print($node->right);
+        }
     }
 }

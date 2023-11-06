@@ -231,4 +231,26 @@ final class BinarySearchTreeTest extends TestCase
         $this->assertTrue($tree->search(1));
         $this->assertTrue($tree->search(new BinarySearchNode(1)));
     }
+
+    function testPrintShouldWork()
+    {
+        $tree = new BinarySearchTree();
+        $tree->insert(50);
+        $tree->insert(25);
+        $tree->insert(75);
+        $tree->insert(11);
+        $tree->insert(33);
+        $tree->insert(61);
+        $tree->insert(89);
+        $tree->insert(30);
+        $tree->insert(40);
+        $tree->insert(52);
+        $tree->insert(82);
+        $tree->insert(95);
+        $tree->insert(55);
+
+        $tree->print();
+
+        $this->expectOutputString("11\n25\n30\n33\n40\n50\n52\n55\n61\n75\n82\n89\n95\n");
+    }
 }
