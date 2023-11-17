@@ -10,4 +10,11 @@ final class BinaryMaxHeapTest extends TestCase
         $heap = new BinaryMaxHeap();
         $this->assertTrue($heap->insert(40));
     }
+
+    function testDeleteShouldReturnTrueOnDelete()
+    {
+        $heap = new BinaryMaxHeap();
+        $heap->insert(40);
+        $this->assertTrue($heap->delete());
+    }
 }

@@ -12,6 +12,7 @@ I also picked up some videos and great articles too. See below for links.
 * [PHP Stack](./php/src/Stack)
 * [PHP Binary Search Tree](./php/src/BinarySearchTree)
 * [PHP Hash Table](./php/src/HashTable)
+* [PHP Binary Max Heap](./php/src/BinaryMaxHeap)
 
 ### Algorithms
 * [TS Binary Search](./ts/src/Array/BinarySearch.ts)
