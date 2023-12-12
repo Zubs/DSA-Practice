@@ -179,7 +179,6 @@ class BinarySearchTree
                     }
                 // If the current node has both left and right nodes
                 } else {
-                    // TODO: Implement a way to keep the children
                     $successor = $this->getSuccessor($current_node);
                     $former_left = $current_node->left;
                     $former_right = $current_node->right;

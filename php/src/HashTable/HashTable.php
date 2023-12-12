@@ -2,6 +2,8 @@
 
 namespace Zubs\Dsa\HashTable;
 
+use Zubs\Dsa\Trie\TrieNode;
+
 class HashTable
 {
     private array $table = [];
@@ -27,12 +29,28 @@ class HashTable
         return $value;
     }
 
+    public function setChildTrie(string $key, TrieNode $node): TrieNode
+    {
+        $index = $this->hash($key);
+        $this->table[$index] = $node;
+        $this->size += 1;
+
+        return $node;
+    }
+
     /**
      * Fetch a stored value from the hash table
      * @param string $key Key to search for
      * @return string|int|null Returns null or stored value
      */
     public function get(string $key): string | int | null
+    {
+        $index = $this->hash($key);
+
+        return array_key_exists($index, $this->table) ? $this->table[$index] : null;
+    }
+
+    public function getChildTree(string $key): TrieNode | null
     {
         $index = $this->hash($key);
 
