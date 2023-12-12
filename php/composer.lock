@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09af797b85e8bc9ee410e81d879fb30a",
+    "content-hash": "d9a15cda63002734d7107dd7e0607cce",
     "packages": [],
     "packages-dev": [
         {
@@ -1406,6 +1406,63 @@
                 }
             ],
             "time": "2020-10-26T13:12:34+00:00"
+        },
+        {
+            "name": "sebastian/object-graph",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/object-graph.git",
+                "reference": "3f16c64b3178f03c06ff19277be333cc47760b43"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-graph/zipball/3f16c64b3178f03c06ff19277be333cc47760b43",
+                "reference": "3f16c64b3178f03c06ff19277be333cc47760b43",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "sebastian/object-enumerator": "^4.0",
+                "sebastian/object-reflector": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de"
+                }
+            ],
+            "description": "Provides useful operations on PHP object graphs",
+            "homepage": "https://github.com/sebastianbergmann/object-graph/",
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/object-graph/issues",
+                "source": "https://github.com/sebastianbergmann/object-graph/tree/2.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-02-24T14:08:24+00:00"
         },
         {
             "name": "sebastian/object-reflector",

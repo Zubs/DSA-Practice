@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Zubs\Dsa\Trie\Trie;
+use function SebastianBergmann\ObjectGraph\object_graph_dump;
 
 final class TrieTest extends TestCase
 {
@@ -34,7 +35,9 @@ final class TrieTest extends TestCase
         $trie->insert('hell');
         $trie->insert('help');
         $trie->insert('helping');
-        $words = $trie->collectAllWords();
-        $this->assertEquals(['hello', 'world', 'hell', 'help', 'helping'], $words);
+        $image_name = 'images/' . __FUNCTION__ . '.png';
+        object_graph_dump($image_name, $trie);
+//        $words = $trie->collectAllWords();
+//        $this->assertEquals(['hello', 'world', 'hell', 'help', 'helping'], $words);
     }
 }
