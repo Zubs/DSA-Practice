@@ -31,17 +31,18 @@ class CircularLinkedList extends Base
     {
         $new_node = new ListNode($data);
 
-        if (is_null($this->first_node)) $this->first_node = $new_node;
-        else {
+        if (is_null($this->first_node)) {
+            $this->first_node = $new_node;
+            $this->last_node = $new_node;
+            // $this->last_node->next = $this->first_node;
+        } else {
             $current_first_node = $this->first_node;
             $this->first_node = $new_node;
             $this->first_node->next = $current_first_node;
-
-            if (is_null($this->last_node)) $this->last_node = $current_first_node;
             $this->last_node->next = $this->first_node;
-
-            $this->total_nodes += 1;
         }
+
+        $this->total_nodes += 1;
 
         return true;
     }
@@ -215,30 +216,46 @@ class CircularLinkedList extends Base
         }
     }
 
-    public function reverse(): bool {
+    /**
+     * This method is used to get the size of the circular linked list.
+     *
+     * @return int The total number of nodes in the list.
+     */
+    public function size(): int
+    {
+        return $this->total_nodes;
+    }
+
+    
+    public function reverse(): bool
+    {
         if (
             !$this->total_nodes ||
             is_null($this->first_node) ||
             is_null($this->last_node)
         ) return false;
-        else {
-            $current_node = $this->first_node;
-            $reversed_list = new self();
 
-            while (!is_null($current_node) && $current_node->next !== $this->first_node) {
-                $reversed_list->insertFirst($current_node->data);
-                $current_node = $current_node->next;
-            }
+        $current_node = $this->first_node;
+        $reversed_list = new self();
 
+        while (!is_null($current_node) && $current_node->next !== $this->first_node) {
             $reversed_list->insertFirst($current_node->data);
-
-            $this->first_node = $reversed_list->first_node;
-            $this->last_node = $reversed_list->last_node;
-
-            return true;
+            $current_node = $current_node->next;
         }
+
+        $reversed_list->insertFirst($current_node->data);
+
+        $this->first_node = $reversed_list->first_node;
+        $this->last_node = $reversed_list->last_node;
+
+        return true;
     }
 
+    /**
+     * This method is used to display the circular linked list.
+     *
+     * @return void
+     */
     public function display(): void
     {
         echo sprintf("There are %s items in the list", $this->total_nodes) . PHP_EOL;
