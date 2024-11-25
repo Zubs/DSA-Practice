@@ -9,6 +9,11 @@ class HashTable
     private array $table = [];
     private int $size = 0;
 
+    /**
+     * Creates a unique hash to use
+     * @param string $key User provided key
+     * @return string Hashed key
+     */
     private function hash(string $key): string
     {
         return hash('md5', $key);
