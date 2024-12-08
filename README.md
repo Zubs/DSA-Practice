@@ -30,6 +30,10 @@ I also picked up some videos and great articles too. See below for links.
   * Traversal (Listing all items), O(n): Listing all items involves actually traversing every item.
   * <b>Worst Case Scenario:</b> When hashes are not unique, collisions occur and a LinkedList might be employed. This leads to O(n) time for all operations.
   * <b>Space Complexity, O(n):</b> New key-value pairs use new memory space.
+* [PHP Trie](./php/src/Trie)
+  * Insertion, O(n): Where `n` is the length of the string to be inserted. You have to either insert `n` characters or traverse `n` characters on every insertion.
+  * Searching, O(n): `n` is as stated above. You have to traverse every character to confirm validity of the word.
+  * Deletion, O(n): `n` is as stated above. You have to traverse every character to get the word, and might have to delete every character too.
 * [PHP Binary Max Heap](./php/src/BinaryMaxHeap)
 
 ### Algorithms

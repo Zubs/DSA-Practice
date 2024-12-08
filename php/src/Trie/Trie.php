@@ -56,6 +56,8 @@ class Trie
     {
         $node = $node ?? $this->root;
 
+        // Todo: finish this
+
         var_dump($node);
     }
 }
